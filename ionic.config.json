@@ -1,0 +1,7 @@
+{
+  "name": "M355-Project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
