@@ -5,11 +5,11 @@ describe('WLANPage', () => {
   let component: WLANPage;
   let fixture: ComponentFixture<WLANPage>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(WLANPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
