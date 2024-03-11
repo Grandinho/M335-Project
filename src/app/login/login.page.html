@@ -9,13 +9,18 @@
     <div class="page-img">
       <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
     </div>
-      <ion-item>
-        <ion-input label="Nutzername:" formControlName="username" type="text" placeholder="enter username here"></ion-input>
-      </ion-item>
-    <div class="page-content">
-      <ion-button type="submit" [disabled]="!loginForm.valid">
-        Start
-      </ion-button>
-    </div>
+    <ion-item lines="full">
+      <ion-label position="floating">Nutzername:</ion-label>
+      <ion-input
+        formControlName="username"
+        type="text"
+        placeholder="Nutzername eingeben"></ion-input>
+    </ion-item>
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="!loginForm.valid">
+      Start
+    </ion-button>
   </form>
 </ion-content>

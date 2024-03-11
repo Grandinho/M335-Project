@@ -1,32 +1,35 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule], // Import Ionic components here for standalone usage
+  imports: [IonicModule, ReactiveFormsModule],
 })
 export class LoginPage {
-  loginForm = new FormGroup({
-    username: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(30),
-      Validators.pattern(/^[a-zA-Z]+$/)
-    ])
-  });
+  loginForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.loginForm = new FormGroup({ // Definitive Zuweisung im Konstruktor
+      username: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.pattern(/^[a-zA-Z]+$/)
+      ])
+    });
+  }
 
   start() {
     if (this.loginForm.valid) {
       console.log("Nutzername ist gültig: ", this.loginForm.value.username);
+      this.router.navigate(['/permissions']);
     } else {
       console.error("Nutzername ist ungültig!");
+      // Benutzerfeedback hier
     }
-    this.router.navigate(['/permissions']);
   }
 }
