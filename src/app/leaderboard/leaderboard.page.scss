@@ -1,0 +1,107 @@
+.title {
+  text-align: center;
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #4b4e59;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #2a2a2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.position {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderboard-details {
+  flex-grow: 1;
+}
+
+.leaderboard-details h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.leaderboard-details p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.position {
+  background-color: #f2f2f2;
+  color: #000;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.emojis {
+  font-size: 20px;
+  margin-left: auto;
+}
+
+.emojis .schnitzel {
+  margin-right: 5px;
+}
+
+.emojis .kartoffeln {
+  margin-right: 5px;
+}
+
+ion-footer {
+  --border-color: #ccc;
+  --border-width: 1px;
+}
+
+.divider {
+  width: var(--border-width);
+  height: 50px;
+  background-color: #000;
+  margin: 14px;
+}
+
+ion-button ion-img {
+  width: 50px;
+  height: 50px;
+}
+
+ion-segment {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+ion-segment-button {
+  width: 50%;
+}
+
+ion-segment-button::after {
+  content: none;
+}

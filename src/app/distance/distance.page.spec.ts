@@ -5,11 +5,11 @@ describe('DistancePage', () => {
   let component: DistancePage;
   let fixture: ComponentFixture<DistancePage>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(DistancePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

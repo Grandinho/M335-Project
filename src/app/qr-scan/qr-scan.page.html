@@ -1,13 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>QR-Scan</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="content">
+  <ion-text class="ion-text-center"
+    >Please scan the QR code containing the following information:
+    <ion-label color="danger">{{ toScanValue }}</ion-label>
+  </ion-text>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">QR-Scan</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <ion-button (click)="scan()" expand="block">
+    <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+    Scan
+  </ion-button>
+
+  <div *ngIf="scanAttempted">
+    <div *ngIf="taskCompleted; else elseBlock" class="result correct">
+      Correct
+    </div>
+    <ng-template #elseBlock>
+      <div class="result incorrect">False</div>
+    </ng-template>
+  </div>
+</div>

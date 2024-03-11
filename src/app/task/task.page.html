@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ currentTitle }}</ion-title>
+    <ion-icon
+      class="ion-float-right ion-margin-end"
+      name="close-circle-outline"
+      style="font-size: 24px"
+      color="danger"
+      (click)="navigateToLeaderboard()"
+    ></ion-icon>
+  </ion-toolbar>
+  <app-timer></app-timer>
+</ion-header>
+
+<ion-content>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="custom-toolbar ion-text-center">
+    <ion-icon
+      name="chevron-forward-circle-outline"
+      (click)="navigateToNextTask()"
+    ></ion-icon>
+    <p *ngIf="taskCompleted">completed</p>
+  </ion-toolbar>
+</ion-footer>
