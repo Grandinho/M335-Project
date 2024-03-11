@@ -24,3 +24,29 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+.content {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.location-info,
+.distance-display {
+  text-align: center;
+  margin: 8px 0;
+}
+.distance-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 10px 20px;
+  background-color: #f0f0f0; /* Light gray background */
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 20px; /* Rounded border */
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff; /* Blue text color to match the border */
+}

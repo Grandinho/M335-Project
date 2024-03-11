@@ -1,13 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Geolocation</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Geolocation</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<div class="content">
+  <p style="font-size: large">Begib dich zum Hänggiplatz</p>
+  <div class="location-info">
+    <p>
+      Aktueller Standort: {{ currentLocation.lat | number:'1.6-6' }}, {{
+      currentLocation.lng | number:'1.6-6' }}
+    </p>
+    <p>
+      Zielstandort: {{ targetLocation.lat | number:'1.6-6' }}, {{
+      targetLocation.lng | number:'1.6-6' }}
+    </p>
+  </div>
+  <div class="distance-display">Distanz: {{ distance | number:'1.2-2' }} m</div>
+</div>

@@ -1,20 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <div class="header">
     <ion-title>
-      Blank
+      Home
     </ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content [fullscreen]="true" >
+  <div class="page-img">
+    <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
+  </div>
+  <div class="page-content">
+    <ion-button (click)="buttonClicked()">
+      Jagd beginnen
+    </ion-button>
   </div>
 </ion-content>
