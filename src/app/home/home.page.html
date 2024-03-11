@@ -1,32 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Blank </ion-title>
+    <div class="header">
+    <ion-title>
+      Home
+    </ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
+<ion-content [fullscreen]="true" >
+  <div class="page-img">
+    <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
   </div>
-  <ion-button routerLink="task/geolocation">Geolocation</ion-button>
-  <ion-button routerLink="task/distance">distance</ion-button>
-  <ion-button routerLink="task/qr-scan">qr-scan</ion-button>
-  <ion-button routerLink="task/sensor">sensor</ion-button>
-  <ion-button routerLink="task/device-status">device-status</ion-button>
-  <ion-button routerLink="task/wlan">wlan</ion-button>
+  <div class="page-content">
+    <ion-button (click)="buttonClicked()">
+      Jagd beginnen
+    </ion-button>
+  </div>
 </ion-content>
