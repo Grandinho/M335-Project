@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WLANPage } from './wlan.page';
+import { TaskPage } from './task.page';
 
-describe('WLANPage', () => {
-  let component: WLANPage;
-  let fixture: ComponentFixture<WLANPage>;
+describe('TaskPage', () => {
+  let component: TaskPage;
+  let fixture: ComponentFixture<TaskPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WLANPage);
+    fixture = TestBed.createComponent(TaskPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
