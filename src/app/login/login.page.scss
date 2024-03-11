@@ -16,3 +16,19 @@
 .header{
   text-align: center;
 }
+
+.form-item {
+  padding: 15px;
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
