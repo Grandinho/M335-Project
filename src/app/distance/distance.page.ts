@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertController, IonicModule } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-distance',
@@ -23,10 +24,13 @@ export class DistancePage implements OnInit {
     private zone: NgZone,
     private alertController: AlertController,
     private platform: Platform,
+    private taskService: TaskService,
   ) {}
 
   async ngOnInit() {
     await this.startLocationWatch();
+    this.taskService.nextRoute('task/qr-scan');
+    this.taskService.setTaskTitle('Distance');
   }
 
   async startLocationWatch() {
