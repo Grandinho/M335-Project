@@ -13,6 +13,10 @@ export const routes: Routes = [
     loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
   },
   {
+    path: 'permissions',
+    loadComponent: () => import('./permissions/permissions.page').then((m) => m.PermissionsPage),
+  },
+  {
     path: 'result',
     loadComponent: () =>
       import('./result/result.page').then((m) => m.ResultPage),
@@ -61,4 +65,9 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'permissions',
+    loadComponent: () => import('./permissions/permissions.page').then( m => m.PermissionsPage)
+  },
+
 ];

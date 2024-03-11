@@ -1,0 +1,54 @@
+ion-header {
+  ion-toolbar {
+    background-color: #3880ff; // Ändern Sie die Farbe, wenn Sie möchten
+    color: #fff;
+
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}
+
+ion-content {
+
+  ion-list {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    ion-item {
+      --padding-start: 20px; // Innenabstand am Anfang des Items
+      --inner-padding-end: 20px; // Innenabstand am Ende des inneren Inhalts
+      --ion-item-background: #fff; // Hintergrundfarbe der List-Items
+      --border-color: #e0e0e0; // Farbe der Item-Ränder
+      --border-width: 0.5px; // Breite der Item-Ränder
+      --border-style: solid; // Stil der Item-Ränder
+
+      &.ion-color-danger {
+        --ion-color-base: #ff3b30; // Rote Farbe bei Fehlen der Berechtigung
+      }
+
+      &.ion-color-success {
+        --ion-color-base: #32db64; // Grüne Farbe bei Vorhandensein der Berechtigung
+      }
+
+      ion-label {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  ion-button {
+    margin: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+
+    &:disabled {
+      --opacity: 0.8; // Leicht durchsichtig, wenn deaktiviert
+      cursor: not-allowed;
+    }
+  }
+}

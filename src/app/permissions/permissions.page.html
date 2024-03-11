@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Berechtigung</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item [color]="hasCameraPermission ? 'success' : 'danger'">
+      <ion-label>
+        {{ hasCameraPermission ? 'Kameraberechtigung erteilt' : 'Kameraberechtigung fehlt' }}
+      </ion-label>
+    </ion-item>
+    <ion-item [color]="hasLocationPermission ? 'success' : 'danger'">
+      <ion-label>
+        {{ hasLocationPermission ? 'Standortberechtigung erteilt' : 'Standortberechtigung fehlt' }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" color="secondary" (click)="requestPermissions()" *ngIf="!canProceed">
+    Berechtigungen anfordern
+  </ion-button>
+  <ion-button expand="block" [disabled]="!canProceed" (click)="buttonClicked()">
+    Weiter
+  </ion-button>
+</ion-content>
