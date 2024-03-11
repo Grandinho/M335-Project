@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
   },
   {
+    path: 'permissions',
+    loadComponent: () => import('./permissions/permissions.page').then((m) => m.PermissionsPage),
+  },
+  {
     path: 'geolocation',
     loadComponent: () => import('./geolocation/geolocation.page').then( m => m.GeolocationPage)
   },
@@ -42,4 +46,9 @@ export const routes: Routes = [
     path: 'leaderboard',
     loadComponent: () => import('./leaderboard/leaderboard.page').then( m => m.LeaderboardPage)
   },
+  {
+    path: 'permissions',
+    loadComponent: () => import('./permissions/permissions.page').then( m => m.PermissionsPage)
+  },
+
 ];

@@ -27,6 +27,6 @@ export class LoginPage {
     } else {
       console.error("Nutzername ist ungültig!");
     }
-    this.router.navigate(['/leaderboard']);
+    this.router.navigate(['/permissions']);
   }
 }
