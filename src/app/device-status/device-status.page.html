@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Device-Status</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="content">
+  <p>Charge your device</p>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Device-Status</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <p>Current status:</p>
+  <div *ngIf="!isCharging; else elseBlock" class="ion-text-center">
+    <ion-icon name="battery-dead-outline" color="danger"></ion-icon>
+    <p>Not charging</p>
+  </div>
+  <ng-template #elseBlock class="ion-text-center">
+    <ion-icon name="battery-charging-outline" color="success"></ion-icon>
+    <p>Charging</p>
+  </ng-template>
+</div>

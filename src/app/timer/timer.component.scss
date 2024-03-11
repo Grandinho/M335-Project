@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "digital-clock-font";
+  src: url("~src/assets/digital-7.ttf");
+}
+
+.timer {
+  display: flex;
+  font-variant-numeric: tabular-nums;
+  font-family: digital-clock-font;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  font-size: 18px;
+  font-weight: bold;
+  width: 25%;
+  color: #007bff;
+}
+
+.timer-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}

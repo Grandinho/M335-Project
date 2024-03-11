@@ -1,8 +1,9 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-geolocation',
@@ -20,10 +21,12 @@ export class GeolocationPage implements OnInit {
   constructor(
     private zone: NgZone,
     private alertController: AlertController,
+    private taskService: TaskService,
   ) {}
-
   async ngOnInit() {
     await this.startLocationWatch();
+    this.taskService.nextRoute('task/distance');
+    this.taskService.setTaskTitle('Geolocation');
   }
 
   async startLocationWatch() {
@@ -32,27 +35,24 @@ export class GeolocationPage implements OnInit {
       timeout: 10000, // Timeout after 10 seconds
       maximumAge: 0, // Accept only fresh locations
     };
-    try {
-      this.watchId = Geolocation.watchPosition(options, (position, err) => {
-        this.zone.run(() => {
-          if (position) {
-            this.currentLocation.lat = position.coords.latitude;
-            this.currentLocation.lng = position.coords.longitude;
-            this.distance = this.haversineDistance(
-              this.currentLocation,
-              this.targetLocation,
-            );
-            if (this.distance <= 5) {
-              this.presentAlert();
-            }
-          } else {
-            console.log(err);
+    this.watchId = Geolocation.watchPosition(options, (position, err) => {
+      this.zone.run(() => {
+        if (position) {
+          this.currentLocation.lat = position.coords.latitude;
+          this.currentLocation.lng = position.coords.longitude;
+          this.distance = this.haversineDistance(
+            this.currentLocation,
+            this.targetLocation,
+          );
+          this.distance = 5;
+          if (this.distance <= 5) {
+            this.taskService.completeTask(true);
           }
-        });
+        } else {
+          console.log(err);
+        }
       });
-    } catch (err) {
-      console.log(err);
-    }
+    });
   }
 
   async presentAlert() {

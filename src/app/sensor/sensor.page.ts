@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Motion } from '@capacitor/motion';
 import { PluginListenerHandle } from '@capacitor/core';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-sensor',
@@ -13,11 +14,23 @@ import { PluginListenerHandle } from '@capacitor/core';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class SensorPage implements OnInit {
-  constructor() {}
+  orientationType: string = '';
 
+  constructor(private taskService: TaskService) {}
   ngOnInit() {
-    Motion.addListener('orientation', (event: MotionOrientationEventResult) => {
-      console.log(event);
-    });
+    this.taskService.nextRoute('task/device-status');
+    this.taskService.setTaskTitle('Sensor');
+    window.addEventListener('orientationchange', this.handleOrientationChange);
   }
+
+  handleOrientationChange = () => {
+    const orientationType = screen.orientation.type;
+    if (
+      orientationType === 'landscape-primary' ||
+      orientationType === 'landscape-secondary'
+    ) {
+      this.taskService.completeTask(true);
+    }
+    this.orientationType = orientationType;
+  };
 }
