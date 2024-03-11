@@ -5,9 +5,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="loginForm" (ngSubmit)="start()">
+    <div class="page-img">
+      <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
+    </div>
+    <ion-item>
+      <ion-label position="floating">Nutzername:</ion-label>
+      <ion-input formControlName="username" type="text" placeholder="Bitte geben Sie den Nutzernamen ein"></ion-input>
+    </ion-item>
+    <div class="page-content">
+      <ion-button type="submit" [disabled]="!loginForm.valid">
+        Start
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
