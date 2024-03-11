@@ -1,0 +1,23 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  background-color: transparent;
+}
+
+.party-emoji {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.result-details h2 {
+  margin: 0;
+}
+
+.result-details p {
+  margin: 5px 0;
+  text-align: center;
+}

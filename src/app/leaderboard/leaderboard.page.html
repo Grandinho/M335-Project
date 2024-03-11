@@ -1,13 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Leaderboard</ion-title>
+    <ion-title class="title">Leaderboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Leaderboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="leaderboard">
+    <div class="leaderboard-item" *ngFor="let person of persons; let i = index">
+      <div class="profile-icon">
+        <div class="position">{{ i + 1 }}</div>
+      </div>
+      <div class="leaderboard-details">
+        <h2>{{ person.name }}</h2>
+        <p>{{ (person.timeInSeconds - (person.timeInSeconds % 60)) / 60}}:{{ person.timeInSeconds % 60 }}</p>
+      </div>
+      <div class="emojis">
+        <span class="schnitzel">🍗 {{ person.schnitzelCount }}</span>
+        <span class="kartoffeln">🥔 {{ person.potatoCount }}</span>
+      </div>
+    </div>
+  </div>
 </ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment slot="start">
+      <ion-button color="ligth">
+        <ion-img src="assets/images/output-onlinepngtools (1).png" (click)="navigateToStartseite()"></ion-img>
+      </ion-button>
+    </ion-segment>
+    <ion-segment slot="end">
+      <ion-button color="light">
+        <ion-img src="assets/images/14265.png"></ion-img>
+      </ion-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
