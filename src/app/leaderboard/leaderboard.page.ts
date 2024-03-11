@@ -23,6 +23,10 @@ export class LeaderboardPage {
   constructor(private router: Router, private storage: StorageService) {
     persons.push(new Person("test"));
     persons.push(new Person("leonit"));
+    persons.push(new Person("leonit"));
+    persons.push(new Person("leonit"));
+    persons.push(new Person("leonit"));
+    persons.push(new Person("leonit"));
     let selectedPerson = persons.find(item => item.name == "test");
     selectedPerson?.setTime(100);
     selectedPerson?.addPotato();

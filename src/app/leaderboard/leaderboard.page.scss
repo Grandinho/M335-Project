@@ -56,11 +56,10 @@
 }
 
 .position {
-  background-color: #f2f2f2;
+  background-color: #2a2a2a;
   color: #000;
   font-weight: bold;
-  padding: 3px 6px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .emojis {
@@ -105,3 +104,16 @@ ion-segment-button {
 ion-segment-button::after {
   content: none;
 }
+
+.leaderboard-item:nth-child(1) .profile-icon .position{
+  background-color: gold; /* Farbe für Platz 1 */
+}
+
+.leaderboard-item:nth-child(2) .profile-icon .position{
+  background-color: silver; /* Farbe für Platz 2 */
+}
+
+.leaderboard-item:nth-child(3) .profile-icon .position{
+  background-color: #cd7f32; /* Farbe für Platz 3 (Bronze) */
+}
+
