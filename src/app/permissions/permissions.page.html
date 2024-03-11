@@ -17,6 +17,9 @@
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-button expand="block" color="secondary" (click)="requestPermissions()" *ngIf="!canProceed">
+    Berechtigungen anfordern
+  </ion-button>
   <ion-button expand="block" [disabled]="!canProceed" (click)="buttonClicked()">
     Weiter
   </ion-button>
