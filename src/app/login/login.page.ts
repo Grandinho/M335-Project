@@ -1,7 +1,15 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { PersonService } from '../person.service';
+import { persons } from '../leaderboard/person/person';
+import { time } from 'ionicons/icons';
 
 @Component({
   selector: 'app-login',
@@ -15,18 +23,26 @@ export class LoginPage {
     username: new FormControl('', [
       Validators.required,
       Validators.maxLength(30),
-      Validators.pattern(/^[a-zA-Z]+$/)
-    ])
+      Validators.pattern(/^[a-zA-Z]+$/),
+    ]),
   });
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private personService: PersonService,
+  ) {}
 
   start() {
-    if (this.loginForm.valid) {
-      console.log("Nutzername ist gültig: ", this.loginForm.value.username);
+    if (this.loginForm.valid && this.loginForm.value.username) {
+      console.log('Nutzername ist gültig: ', this.loginForm.value.username);
+      this.router.navigate(['/task/geolocation']);
+      this.personService.setPersonName(this.loginForm.value.username);
     } else {
-      console.error("Nutzername ist ungültig!");
+      console.error('Nutzername ist ungültig!');
     }
+  }
+
+  navigateToLeaderboard() {
     this.router.navigate(['/leaderboard']);
   }
 }

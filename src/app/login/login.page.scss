@@ -40,6 +40,28 @@
   margin-top: 20px;
 }
 
-.header{
+.header {
   text-align: center;
+}
+
+ion-footer {
+  --border-color: #ccc;
+  --border-width: 1px;
+}
+
+.divider {
+  width: var(--border-width);
+  height: 50px;
+  background-color: #000;
+  margin: 14px;
+}
+
+ion-button ion-img {
+  width: 50px;
+  height: 50px;
+}
+
+ion-segment {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }

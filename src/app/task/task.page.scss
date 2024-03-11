@@ -4,3 +4,23 @@
   align-items: center;
   height: 100%;
 }
+
+.title {
+  text-align: center;
+}
+
+ion-footer {
+  --border-color: #ccc;
+  --border-width: 1px;
+}
+
+ion-icon {
+  font-size: 50px;
+}
+
+ion-toolbar.custom-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+}

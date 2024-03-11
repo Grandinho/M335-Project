@@ -7,11 +7,15 @@
 <ion-content [fullscreen]="true">
   <form [formGroup]="loginForm" (ngSubmit)="start()">
     <div class="page-img">
-      <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
+      <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd" />
     </div>
     <ion-item>
       <ion-label position="floating">Nutzername:</ion-label>
-      <ion-input formControlName="username" type="text" placeholder="Bitte geben Sie den Nutzernamen ein"></ion-input>
+      <ion-input
+        formControlName="username"
+        type="text"
+        placeholder="Bitte geben Sie den Nutzernamen ein"
+      ></ion-input>
     </ion-item>
     <div class="page-content">
       <ion-button type="submit" [disabled]="!loginForm.valid">
@@ -20,3 +24,21 @@
     </div>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment slot="start">
+      <ion-button color="ligth">
+        <ion-img
+          src="assets/images/output-onlinepngtools (1).png"
+          (click)="navigateToLeaderboard()"
+        ></ion-img>
+      </ion-button>
+    </ion-segment>
+    <ion-segment slot="end">
+      <ion-button color="light">
+        <ion-img src="assets/images/14265.png"></ion-img>
+      </ion-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

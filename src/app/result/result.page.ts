@@ -2,19 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { chevronForwardCircleOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import { PersonService } from '../person.service';
+import { StorageService } from '../_services/storage.service';
+import { Person } from '../leaderboard/person/person';
+import { TimerService } from '../timer.service';
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.page.html',
   styleUrls: ['./result.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
 })
 export class ResultPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  person: Person = new Person();
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
+  isSaved: boolean = false;
+  constructor(
+    private router: Router,
+    private personService: PersonService,
+    private storageService: StorageService,
+    private timerService: TimerService,
+  ) {
+    addIcons({ chevronForwardCircleOutline });
   }
 
+  async ngOnInit() {
+    this.personService.setPersonTime(this.timerService.getTimer());
+    this.timerService.stopTimer();
+    this.person = this.personService.getPerson();
+
+    await this.storageService.addPerson(this.person).then(() => {
+      this.isSaved = true;
+    });
+
+    this.calculateTime();
+  }
+
+  calculateTime() {
+    this.hours = Math.floor(this.personService.getPersonTime() / 3600);
+    this.minutes = Math.floor(
+      (this.personService.getPersonTime() - this.hours * 3600) / 60,
+    );
+    this.seconds =
+      this.personService.getPersonTime() -
+      (this.hours * 3600 + this.minutes * 60);
+  }
+
+  navigateToLeaderboard() {
+    this.router.navigate(['/leaderboard']);
+  }
 }

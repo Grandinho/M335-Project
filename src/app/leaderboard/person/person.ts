@@ -1,19 +1,22 @@
 export class Person {
-  name : string;
-  timeInSeconds : number;
-  schnitzelCount : number;
-  potatoCount : number;
+  name: string;
+  timeInSeconds: number;
+  schnitzelCount: number;
+  potatoCount: number;
 
-
-  constructor(name : string) {
-    this.name = name;
+  constructor() {
+    this.name = '';
     this.timeInSeconds = 0;
-    this.schnitzelCount = 0;
+    this.schnitzelCount = 6;
     this.potatoCount = 0;
   }
 
-  setTime(time : number) {
+  setTime(time: number) {
     this.timeInSeconds = time;
+  }
+
+  setName(name: string) {
+    this.name = name;
   }
 
   addSchnitzel() {

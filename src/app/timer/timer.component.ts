@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersonService } from '../person.service';
 import { IonContent } from '@ionic/angular/standalone';
 import { DecimalPipe } from '@angular/common';
+import { TimerService } from '../timer.service';
 
 @Component({
   selector: 'app-timer',
@@ -11,23 +12,24 @@ import { DecimalPipe } from '@angular/common';
   imports: [IonContent, DecimalPipe],
 })
 export class TimerComponent implements OnInit {
-  timer: number = 0;
   hours: number = 0;
   minutes: number = 0;
   seconds: number = 0;
-  constructor(private personService: PersonService) {}
+  constructor(
+    private personService: PersonService,
+    private timerService: TimerService,
+  ) {}
 
   ngOnInit() {
-    this.startTimer();
+    this.timerService.startTimer();
+    this.subscribeTimer();
   }
 
-  startTimer() {
-    setInterval(() => {
-      this.timer += 1;
-      this.personService.setPersonTime(this.timer);
-      this.hours = Math.floor(this.timer / 3600);
-      this.minutes = Math.floor((this.timer - this.hours * 3600) / 60);
-      this.seconds = this.timer - (this.hours * 3600 + this.minutes * 60);
-    }, 1000);
+  subscribeTimer() {
+    this.timerService.timer$.subscribe((timer: number) => {
+      this.hours = Math.floor(timer / 3600);
+      this.minutes = Math.floor((timer - this.hours * 3600) / 60);
+      this.seconds = timer - (this.hours * 3600 + this.minutes * 60);
+    });
   }
 }

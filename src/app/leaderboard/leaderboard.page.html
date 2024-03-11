@@ -12,7 +12,7 @@
       </div>
       <div class="leaderboard-details">
         <h2>{{ person.name }}</h2>
-        <p>{{ (person.timeInSeconds - (person.timeInSeconds % 60)) / 60}}:{{ person.timeInSeconds % 60 }}</p>
+        <p>{{outputTimeAsString(person.timeInSeconds)}}</p>
       </div>
       <div class="emojis">
         <span class="schnitzel">🍗 {{ person.schnitzelCount }}</span>
@@ -22,13 +22,14 @@
   </div>
 </ion-content>
 
-
-
 <ion-footer>
   <ion-toolbar>
     <ion-segment slot="start">
       <ion-button color="ligth">
-        <ion-img src="assets/images/output-onlinepngtools (1).png" (click)="navigateToStartseite()"></ion-img>
+        <ion-img
+          src="assets/images/output-onlinepngtools (1).png"
+          (click)="navigateToStartseite()"
+        ></ion-img>
       </ion-button>
     </ion-segment>
     <ion-segment slot="end">

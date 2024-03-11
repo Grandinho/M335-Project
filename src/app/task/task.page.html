@@ -15,13 +15,13 @@
 <ion-content>
   <ion-router-outlet></ion-router-outlet>
 </ion-content>
+
 <ion-footer>
-  <ion-toolbar class="ion-text-center">
+  <ion-toolbar class="custom-toolbar ion-text-center">
     <ion-icon
-      *ngIf="taskCompleted"
       name="chevron-forward-circle-outline"
-      size="large"
       (click)="navigateToNextTask()"
     ></ion-icon>
+    <p *ngIf="taskCompleted">completed</p>
   </ion-toolbar>
 </ion-footer>
