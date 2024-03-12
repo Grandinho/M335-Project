@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import {
   chevronForwardCircleOutline,
-  closeCircleOutline,
+  closeCircleOutline, exit,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { TaskService } from '../task.service';
 import { TimerComponent } from '../timer/timer.component';
 import {
+  IonAlert,
   IonButton,
   IonContent,
   IonFooter,
@@ -22,6 +23,7 @@ import { TimerService } from '../timer.service';
 import { PersonService } from '../person.service';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { AlertController} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-task',
@@ -40,6 +42,7 @@ import { Subscription } from 'rxjs';
     IonFooter,
     NgIf,
     IonButton,
+    IonAlert,
   ],
 })
 export class TaskPage implements OnInit {
@@ -54,6 +57,7 @@ export class TaskPage implements OnInit {
     private personService: PersonService,
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
+    private alertController: AlertController
   ) {
     addIcons({ chevronForwardCircleOutline, closeCircleOutline });
   }
@@ -97,4 +101,22 @@ export class TaskPage implements OnInit {
   ionViewWillLeave() {
     this.backSubscription?.unsubscribe();
   }
+
+
+   alertButtons = [
+      {
+        text: 'Abbrechen',
+        role: 'cancel',
+        handler: () => {
+        },
+      },
+      {
+        text: 'Beenden',
+        role: 'confirm',
+        handler: () => {
+          this.exit()
+        },
+      },
+    ];
+
 }
