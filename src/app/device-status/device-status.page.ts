@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import { Device } from '@capacitor/device';
 import { batteryDeadOutline, batteryChargingOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Haptics } from '@capacitor/haptics';
+import {IonIcon} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-device-status',
   templateUrl: './device-status.page.html',
   styleUrls: ['./device-status.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonIcon],
 })
 export class DeviceStatusPage implements OnInit {
   isCharging?: boolean = false;

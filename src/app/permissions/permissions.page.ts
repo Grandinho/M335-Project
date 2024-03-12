@@ -3,7 +3,7 @@ import { Camera } from '@capacitor/camera';
 import { Geolocation } from '@capacitor/geolocation';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import {
   IonButton,
   IonContent,

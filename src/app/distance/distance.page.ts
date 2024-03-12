@@ -1,18 +1,19 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AlertController, IonicModule } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import { Haptics } from '@capacitor/haptics';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
   selector: 'app-distance',
   templateUrl: './distance.page.html',
   styleUrls: ['./distance.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [
+    DecimalPipe
+  ],
 })
 export class DistancePage implements OnInit {
   lastLocation = { lat: 0, lng: 0 };
