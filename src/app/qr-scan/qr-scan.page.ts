@@ -6,6 +6,7 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { qrCodeOutline } from 'ionicons/icons';
 import { TaskService } from '../task.service';
 import { addIcons } from 'ionicons';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-qr-scan',
@@ -35,20 +36,23 @@ export class QRScanPage implements OnInit {
   }
 
   async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      return;
-    }
-    const barcode = await BarcodeScanner.scan();
-    this.scanAttempted = true;
-    this.barcode = barcode.barcodes[0];
+    if (!this.taskCompleted) {
+      const granted = await this.requestPermissions();
+      if (!granted) {
+        return;
+      }
+      const barcode = await BarcodeScanner.scan();
+      this.scanAttempted = true;
+      this.barcode = barcode.barcodes[0];
 
-    if (this.barcode.rawValue == this.toScanValue) {
-      this.taskService.completeTask(true);
-      this.taskCompleted = true;
-    } else {
-      this.taskService.completeTask(false);
-      this.taskCompleted = false;
+      if (this.barcode.rawValue === this.toScanValue) {
+        this.taskService.completeTask(true);
+        this.taskCompleted = true;
+        Haptics.vibrate();
+      } else {
+        this.taskService.completeTask(false);
+        this.taskCompleted = false;
+      }
     }
   }
 

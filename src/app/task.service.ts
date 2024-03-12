@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Haptics } from '@capacitor/haptics';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,10 @@ export class TaskService {
   }
   nextRoute(route: string) {
     this.nextRouteSource.next(route);
+  }
+
+  getTaskCompletion(): boolean {
+    return this.taskCompletionSource.getValue();
   }
 
   constructor() {}

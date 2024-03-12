@@ -6,6 +6,7 @@ import { TaskService } from '../task.service';
 import { Device } from '@capacitor/device';
 import { batteryDeadOutline, batteryChargingOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-device-status',
@@ -16,6 +17,8 @@ import { addIcons } from 'ionicons';
 })
 export class DeviceStatusPage implements OnInit {
   isCharging?: boolean = false;
+  interval: any;
+  completed: boolean = false;
   constructor(private taskService: TaskService) {}
 
   async ngOnInit() {
@@ -27,18 +30,23 @@ export class DeviceStatusPage implements OnInit {
   }
 
   async checkBatteryInfo() {
-    const batteryInfo = await Device.getBatteryInfo();
-    this.isCharging = batteryInfo.isCharging;
-    if (this.isCharging) {
-      this.taskService.completeTask(true);
-    } else {
-      this.taskService.completeTask(false);
+    if (!this.completed) {
+      const batteryInfo = await Device.getBatteryInfo();
+      this.isCharging = batteryInfo.isCharging;
+      if (this.isCharging) {
+        this.taskService.completeTask(true);
+        this.completed = true;
+        clearInterval(this.interval);
+        Haptics.vibrate();
+      } else {
+        this.taskService.completeTask(false);
+      }
     }
   }
 
   async startBatteryCheck() {
     await this.checkBatteryInfo();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.checkBatteryInfo();
     }, 400);
   }

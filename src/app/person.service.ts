@@ -35,6 +35,10 @@ export class PersonService {
     return this.personSource.getValue();
   }
 
+  resetPerson() {
+    this.personSource.next(new Person());
+  }
+
   getPersonName(): string {
     const currentPerson = this.personSource.getValue();
     return currentPerson.name;

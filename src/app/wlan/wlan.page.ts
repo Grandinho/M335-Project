@@ -1,7 +1,4 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import {
   wifiOutline,
@@ -10,19 +7,21 @@ import {
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Network } from '@capacitor/network';
+import { IonIcon } from '@ionic/angular/standalone';
+import { NgIf } from '@angular/common';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-wlan',
   templateUrl: './wlan.page.html',
   styleUrls: ['./wlan.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonIcon, NgIf],
 })
 export class WLANPage implements OnInit {
   isConnected: boolean = false;
   isCompleted: boolean = false;
   wasDisconnected: boolean = false;
-  connectionType?: string;
   constructor(
     private taskService: TaskService,
     private zone: NgZone,
@@ -40,26 +39,25 @@ export class WLANPage implements OnInit {
 
   async checkNetworkStatus() {
     const status = await Network.getStatus();
-    this.isConnected = status.connectionType === 'wifi';
+    this.isConnected = status.connected;
     this.wasDisconnected = !this.isConnected;
-    this.connectionType = status.connectionType;
   }
 
   listenNetworkChanges() {
     // Listen for network status change events
     Network.addListener('networkStatusChange', (status) => {
       this.zone.run(() => {
-        this.isConnected = status.connectionType === 'wifi';
-        this.connectionType = status.connectionType;
-        if (!this.wasDisconnected) {
-          this.wasDisconnected = this.isConnected;
-        }
-        if (this.isConnected && this.wasDisconnected) {
-          this.taskService.completeTask(true);
-          this.isCompleted = true;
-        } else {
-          this.taskService.completeTask(false);
-          this.isCompleted = false;
+        if (!this.isCompleted) {
+          this.isConnected = status.connected;
+          if (!this.wasDisconnected) {
+            this.wasDisconnected = this.isConnected;
+          }
+          if (this.isConnected && this.wasDisconnected) {
+            this.taskService.completeTask(true);
+            this.isCompleted = true;
+            Haptics.vibrate();
+            Network.removeAllListeners();
+          }
         }
       });
     });

@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { Motion } from '@capacitor/motion';
 import { PluginListenerHandle } from '@capacitor/core';
 import { TaskService } from '../task.service';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-sensor',
@@ -15,22 +16,28 @@ import { TaskService } from '../task.service';
 })
 export class SensorPage implements OnInit {
   orientationType: string = '';
+  completed: boolean = false;
 
   constructor(private taskService: TaskService) {}
   ngOnInit() {
     this.taskService.nextRoute('task/device-status');
     this.taskService.setTaskTitle('Sensor');
+    this.orientationType = screen.orientation.type;
     window.addEventListener('orientationchange', this.handleOrientationChange);
   }
 
   handleOrientationChange = () => {
-    const orientationType = screen.orientation.type;
-    if (
-      orientationType === 'landscape-primary' ||
-      orientationType === 'landscape-secondary'
-    ) {
-      this.taskService.completeTask(true);
+    if (!this.completed) {
+      const orientationType = screen.orientation.type;
+      if (orientationType === 'landscape-primary') {
+        this.taskService.completeTask(true);
+        this.completed = true;
+        Haptics.vibrate();
+        window.removeEventListener(
+          'orientationchange',
+          this.handleOrientationChange,
+        );
+      }
     }
-    this.orientationType = orientationType;
   };
 }

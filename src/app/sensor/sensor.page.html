@@ -1,35 +1,36 @@
-<div class="content">
-  <p style="font-size: large">Rotate your phone to the left side</p>
+<ion-content>
+  <div class="content">
+    <p style="font-size: large">Rotate your phone to the left side</p>
 
-  <div>
-    <p class="ion-text-center">Current rotation:</p>
-    <img
-      *ngIf="orientationType === 'landscape-primary'"
-      src="assets/landscape-primary.png"
-      alt="Rotation {{orientationType}}"
-    />
-    <img
-      *ngIf="orientationType === 'landscape-secondary'"
-      src="assets/landscape-secondary.png"
-      alt="Rotation {{orientationType}}"
-    />
-    <img
-      *ngIf="orientationType === 'portrait-primary'"
-      src="assets/portrait-primary.png"
-      alt="Rotation {{orientationType}}"
-    />
-    <img
-      *ngIf="orientationType === 'portrait-secondary'"
-      src="assets/portrait-secondary.png"
-      alt="Rotation {{orientationType}}"
-    />
+    <div>
+      <p class="ion-text-center">Current rotation:</p>
+      <img
+        *ngIf="orientationType === 'landscape-primary'"
+        src="assets/landscape-primary.png"
+        alt="Rotation {{orientationType}}"
+      />
+      <img
+        *ngIf="orientationType === 'landscape-secondary'"
+        src="assets/landscape-secondary.png"
+        alt="Rotation {{orientationType}}"
+      />
+      <img
+        *ngIf="orientationType === 'portrait-primary'"
+        src="assets/portrait-primary.png"
+        alt="Rotation {{orientationType}}"
+      />
+      <img
+        *ngIf="orientationType === 'portrait-secondary'"
+        src="assets/portrait-secondary.png"
+        alt="Rotation {{orientationType}}"
+      />
+    </div>
+    <div>
+      <p class="ion-text-center">Target rotation:</p>
+      <img
+        src="assets/landscape-primary.png"
+        alt="Rotation: landscape-primary"
+      />
+    </div>
   </div>
-  <div>
-    <p class="ion-text-center">Target rotation:</p>
-    <img
-      src="assets/landscape-primary.png"
-      alt="Rotation: landscape-primary"
-      style="background-color: grey"
-    />
-  </div>
-</div>
+</ion-content>

@@ -25,13 +25,12 @@ export class LeaderboardPage implements OnInit {
 
   async loadFromStorage() {
     const storedPersons = await this.storage.getPersons();
-    console.log('test: ' + JSON.stringify(storedPersons));
     if (Array.isArray(storedPersons)) {
-      // Ensure storedPersons is an array
-      console.log('leaderboard', storedPersons);
       this.persons.push(...storedPersons);
     }
-    console.log(this.persons);
+    this.persons = this.persons.sort(
+      (a, b) => a.timeInSeconds - b.timeInSeconds,
+    );
   }
 
   outputTimeAsString(personTime: number): string {
@@ -47,6 +46,6 @@ export class LeaderboardPage implements OnInit {
   }
 
   navigateToStartseite() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

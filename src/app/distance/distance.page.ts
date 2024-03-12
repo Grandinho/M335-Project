@@ -5,6 +5,7 @@ import { AlertController, IonicModule } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
 import { TaskService } from '../task.service';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-distance',
@@ -19,6 +20,7 @@ export class DistancePage implements OnInit {
   startDistance: number = 5;
   remainingDistance: number = this.startDistance;
   test: number = 0;
+  completed: boolean = false;
   watchId: any;
   constructor(
     private zone: NgZone,
@@ -42,22 +44,27 @@ export class DistancePage implements OnInit {
     try {
       this.watchId = Geolocation.watchPosition(options, (position, err) => {
         this.zone.run(() => {
-          if (position) {
-            this.currentLocation.lat = position.coords.latitude;
-            this.currentLocation.lng = position.coords.longitude;
-            if (this.lastLocation.lat !== 0 && this.lastLocation.lng !== 0) {
-              this.test = this.haversineDistance(
-                this.lastLocation,
-                this.currentLocation,
-              );
-              this.remainingDistance -= this.test;
+          if (!this.completed) {
+            if (position) {
+              this.currentLocation.lat = position.coords.latitude;
+              this.currentLocation.lng = position.coords.longitude;
+              if (this.lastLocation.lat !== 0 && this.lastLocation.lng !== 0) {
+                this.test = this.haversineDistance(
+                  this.lastLocation,
+                  this.currentLocation,
+                );
+                this.remainingDistance -= this.test;
+              }
+              if (this.remainingDistance <= 0) {
+                this.remainingDistance = 0;
+                this.taskService.completeTask(true);
+                this.completed = true;
+                Haptics.vibrate();
+              }
+              this.lastLocation = { ...this.currentLocation };
+            } else {
+              console.log(err);
             }
-            if (this.remainingDistance <= 0) {
-              this.remainingDistance = 0;
-            }
-            this.lastLocation = { ...this.currentLocation };
-          } else {
-            console.log(err);
           }
         });
       });

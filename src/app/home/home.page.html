@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header">
-    <ion-title>
-      Home
-    </ion-title>
+      <ion-title> Home </ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true">
   <div class="page-img">
-    <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd">
+    <img src="assets/img/schnitzeljagd.jpg" alt="Schnitzeljagd" />
   </div>
   <div class="page-content">
-    <ion-button (click)="buttonClicked()">
-      Jagd beginnen
-    </ion-button>
+    <ion-button (click)="buttonClicked()"> Jagd beginnen </ion-button>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment slot="start">
+      <ion-button>
+        <ion-img src="assets/images/output-onlinepngtools (1).png"></ion-img>
+      </ion-button>
+    </ion-segment>
+    <ion-segment slot="end">
+      <ion-button (click)="navigateToLeaderboard()">
+        <ion-img src="assets/images/14265.png"></ion-img>
+      </ion-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

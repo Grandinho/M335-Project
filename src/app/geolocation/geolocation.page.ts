@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule, AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { TaskService } from '../task.service';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-geolocation',
@@ -16,8 +17,8 @@ export class GeolocationPage implements OnInit {
   currentLocation = { lat: 0, lng: 0 };
   targetLocation = { lat: 47.071586, lng: 8.348635 };
   distance: number = 0;
-  geolocationError: any;
   watchId: any;
+  completed: boolean = false;
   constructor(
     private zone: NgZone,
     private alertController: AlertController,
@@ -37,19 +38,23 @@ export class GeolocationPage implements OnInit {
     };
     this.watchId = Geolocation.watchPosition(options, (position, err) => {
       this.zone.run(() => {
-        if (position) {
-          this.currentLocation.lat = position.coords.latitude;
-          this.currentLocation.lng = position.coords.longitude;
-          this.distance = this.haversineDistance(
-            this.currentLocation,
-            this.targetLocation,
-          );
-          this.distance = 5;
-          if (this.distance <= 5) {
-            this.taskService.completeTask(true);
+        if (!this.completed) {
+          if (position) {
+            this.currentLocation.lat = position.coords.latitude;
+            this.currentLocation.lng = position.coords.longitude;
+            this.distance = this.haversineDistance(
+              this.currentLocation,
+              this.targetLocation,
+            );
+            this.distance = 5;
+            if (this.distance <= 5) {
+              this.taskService.completeTask(true);
+              this.completed = true;
+              Haptics.vibrate();
+            }
+          } else {
+            console.log(err);
           }
-        } else {
-          console.log(err);
         }
       });
     });
