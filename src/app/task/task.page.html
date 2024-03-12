@@ -2,12 +2,12 @@
   <ion-toolbar class="ion-align-items-center">
     <ion-title>{{ currentTitle }}</ion-title>
     <ion-icon
+      id="present-alert"
       slot="end"
       class="ion-margin-end"
       name="close-circle-outline"
       style="font-size: 24px"
       color="danger"
-      (click)="exit()"
     ></ion-icon>
   </ion-toolbar>
   <app-timer></app-timer>
@@ -16,6 +16,11 @@
 <ion-content>
   <ion-router-outlet></ion-router-outlet>
 </ion-content>
+<ion-alert
+  trigger="present-alert"
+  header="Jagd beenden?"
+  [buttons]="alertButtons"
+></ion-alert>
 
 <ion-footer>
   <ion-toolbar class="custom-toolbar ion-text-center">
