@@ -69,9 +69,11 @@ export class TaskPage implements OnInit {
     });
   }
 
-  navigateToNextTask() {
-    this.router.navigate([this.nextRoute]);
+  async navigateToNextTask() {
+    await this.router.navigate([this.nextRoute]);
     this.taskService.completeTask(false);
+    this.timerService.stopPotatoTimer();
+    this.timerService.startPotatoTimer();
   }
 
   exit() {

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { chevronForwardCircleOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
@@ -9,13 +6,37 @@ import { PersonService } from '../person.service';
 import { StorageService } from '../_services/storage.service';
 import { Person } from '../leaderboard/person/person';
 import { TimerService } from '../timer.service';
+import { ApiService } from '../api.service';
+import { HttpClientModule } from '@angular/common/http';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonProgressBar,
+  IonContent,
+  IonFooter,
+  IonIcon,
+} from '@ionic/angular/standalone';
+import { DecimalPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.page.html',
   styleUrls: ['./result.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [
+    HttpClientModule,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonProgressBar,
+    IonContent,
+    IonFooter,
+    IonIcon,
+    DecimalPipe,
+    NgIf,
+  ],
+  providers: [ApiService],
 })
 export class ResultPage implements OnInit {
   person: Person = new Person();
@@ -28,6 +49,7 @@ export class ResultPage implements OnInit {
     private personService: PersonService,
     private storageService: StorageService,
     private timerService: TimerService,
+    private apiService: ApiService,
   ) {
     addIcons({ chevronForwardCircleOutline });
   }
@@ -40,8 +62,15 @@ export class ResultPage implements OnInit {
     await this.storageService.addPerson(this.person).then(() => {
       this.isSaved = true;
     });
-
     this.calculateTime();
+    await this.apiService.postToExcel(
+      this.person.name,
+      this.person.schnitzelCount.toString(),
+      this.person.potatoCount.toString(),
+      this.hours,
+      this.minutes,
+      this.seconds,
+    );
   }
 
   calculateTime() {

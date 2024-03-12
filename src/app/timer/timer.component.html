@@ -4,4 +4,18 @@
       this.seconds | number: "2.0"
     }}
   </div>
+  <div class="potato-timer">
+    {{ this.potatoHours | number: "2.0" }}:{{
+      this.potatoMinutes | number: "2.0"
+    }}:{{ this.potatoSeconds | number: "2.0" }}
+  </div>
+
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    header="Kartoffel erhalten"
+    message="Sie haben ein Kartoffel erhalten, da Sie zu viel Zeit für diese Aufgaben verwenden."
+    subHeader="Anzahl 🥔: {{ potatoCount }}"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+  ></ion-alert>
 </div>

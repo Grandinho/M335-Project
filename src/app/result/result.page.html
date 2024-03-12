@@ -10,13 +10,13 @@
     <h2>Du hast es geschaft!</h2>
     <p class="party-emoji">🎉</p>
     <br />
-    <br />
     <div class="result-details">
       <h2>{{ person.name }}</h2>
       <p>
-        {{ this.hours | number: "2.0" }}:{{ this.minutes | number: "2.0" }}:{{
-        this.seconds | number: "2.0" }}
+        Zeit: {{ this.hours | number: "2.0" }}:{{ this.minutes | number: "2.0"
+        }}:{{ this.seconds | number: "2.0" }}
       </p>
+      <p>Datum: {{person.date}}</p>
       <p class="schnitzel">{{person.schnitzelCount}} 🍗</p>
       <p class="kartoffeln">{{person.potatoCount}} 🥔</p>
     </div>

@@ -13,6 +13,7 @@
       <div class="leaderboard-details">
         <h2>{{ person.name }}</h2>
         <p>{{outputTimeAsString(person.timeInSeconds)}}</p>
+        <p>{{person.date}}</p>
       </div>
       <div class="emojis">
         <span class="schnitzel">🍗 {{ person.schnitzelCount }}</span>
@@ -30,7 +31,7 @@
       </ion-button>
     </ion-segment>
     <ion-segment slot="end">
-      <ion-button>
+      <ion-button [disabled]="true">
         <ion-img src="assets/images/14265.png"></ion-img>
       </ion-button>
     </ion-segment>

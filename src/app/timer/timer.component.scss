@@ -17,9 +17,25 @@
   color: #007bff;
 }
 
+.potato-timer {
+  display: flex;
+  font-variant-numeric: tabular-nums;
+  font-family: digital-clock-font;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border: 2px solid red;
+  font-size: 18px;
+  font-weight: bold;
+  width: 25%;
+  color: red;
+}
+
 .timer-component {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
   align-items: center;
   margin-top: 5px;
 }

@@ -6,23 +6,41 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TimerService {
   constructor() {}
-  private timerSource = new BehaviorSubject<number>(0);
-  private interval: any;
-  timer$ = this.timerSource.asObservable();
+  private taskTimerSource = new BehaviorSubject<number>(0);
+  private taskInterval: any;
+  timer$ = this.taskTimerSource.asObservable();
+
+  private potatoTimerSource = new BehaviorSubject<number>(10);
+  private potatoInterval: any;
+  potatoTimer$ = this.potatoTimerSource.asObservable();
 
   startTimer() {
-    this.interval = setInterval(() => {
-      const currentTime = this.timerSource.getValue();
-      this.timerSource.next(currentTime + 1);
+    this.taskInterval = setInterval(() => {
+      const currentTime = this.taskTimerSource.getValue();
+      this.taskTimerSource.next(currentTime + 1);
     }, 1000);
   }
-
   stopTimer() {
-    this.timerSource.next(0);
-    clearInterval(this.interval);
+    this.taskTimerSource.next(0);
+    clearInterval(this.taskInterval);
+  }
+  getTimer(): number {
+    return this.taskTimerSource.getValue();
   }
 
-  getTimer(): number {
-    return this.timerSource.getValue();
+  startPotatoTimer() {
+    this.potatoInterval = setInterval(() => {
+      const currentTime = this.potatoTimerSource.getValue();
+      if (currentTime > 0) {
+        this.potatoTimerSource.next(currentTime - 1);
+      }
+    }, 1000);
+  }
+  stopPotatoTimer() {
+    this.potatoTimerSource.next(10);
+    clearInterval(this.potatoInterval);
+  }
+  getPotatoTimer(): number {
+    return this.potatoTimerSource.getValue();
   }
 }
