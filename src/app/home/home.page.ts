@@ -11,6 +11,7 @@ import {
   IonImg,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
+import { PersonService } from '../_services/person.service';
 
 @Component({
   selector: 'app-home',
@@ -30,9 +31,13 @@ import { Router } from '@angular/router';
   ],
 })
 export class HomePage {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private personService: PersonService,
+  ) {}
 
   buttonClicked() {
+    this.personService.resetPerson();
     this.router.navigate(['/login']);
   }
 

@@ -11,7 +11,8 @@ export const routes: Routes = [
   },
   {
     path: 'permissions',
-    loadComponent: () => import('./permissions/permissions.page').then((m) => m.PermissionsPage),
+    loadComponent: () =>
+      import('./permissions/permissions.page').then((m) => m.PermissionsPage),
   },
   {
     path: 'result',
@@ -30,41 +31,42 @@ export const routes: Routes = [
       {
         path: 'geolocation',
         loadComponent: () =>
-          import('./geolocation/geolocation.page').then(
+          import('./task/geolocation/geolocation.page').then(
             (m) => m.GeolocationPage,
           ),
       },
       {
         path: 'qr-scan',
         loadComponent: () =>
-          import('./qr-scan/qr-scan.page').then((m) => m.QRScanPage),
+          import('./task/qr-scan/qr-scan.page').then((m) => m.QRScanPage),
       },
       {
         path: 'distance',
         loadComponent: () =>
-          import('./distance/distance.page').then((m) => m.DistancePage),
+          import('./task/distance/distance.page').then((m) => m.DistancePage),
       },
       {
         path: 'sensor',
         loadComponent: () =>
-          import('./sensor/sensor.page').then((m) => m.SensorPage),
+          import('./task/sensor/sensor.page').then((m) => m.SensorPage),
       },
       {
         path: 'device-status',
         loadComponent: () =>
-          import('./device-status/device-status.page').then(
+          import('./task/device-status/device-status.page').then(
             (m) => m.DeviceStatusPage,
           ),
       },
       {
         path: 'wlan',
-        loadComponent: () => import('./wlan/wlan.page').then((m) => m.WLANPage),
+        loadComponent: () =>
+          import('./task/wlan/wlan.page').then((m) => m.WLANPage),
       },
     ],
   },
   {
     path: 'permissions',
-    loadComponent: () => import('./permissions/permissions.page').then( m => m.PermissionsPage)
+    loadComponent: () =>
+      import('./permissions/permissions.page').then((m) => m.PermissionsPage),
   },
-
 ];

@@ -2,25 +2,23 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import { Haptics } from '@capacitor/haptics';
-import {DecimalPipe} from "@angular/common";
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-distance',
   templateUrl: './distance.page.html',
   styleUrls: ['./distance.page.scss'],
   standalone: true,
-  imports: [
-    DecimalPipe
-  ],
+  imports: [DecimalPipe],
 })
 export class DistancePage implements OnInit {
   lastLocation = { lat: 0, lng: 0 };
   currentLocation = { lat: 0, lng: 0 };
   startDistance: number = 5;
   remainingDistance: number = this.startDistance;
-  test: number = 0;
+  walkedDistance: number = 0;
   completed: boolean = false;
   watchId: any;
   constructor(
@@ -50,11 +48,11 @@ export class DistancePage implements OnInit {
               this.currentLocation.lat = position.coords.latitude;
               this.currentLocation.lng = position.coords.longitude;
               if (this.lastLocation.lat !== 0 && this.lastLocation.lng !== 0) {
-                this.test = this.haversineDistance(
+                this.walkedDistance = this.haversineDistance(
                   this.lastLocation,
                   this.currentLocation,
                 );
-                this.remainingDistance -= this.test;
+                this.remainingDistance -= this.walkedDistance;
               }
               if (this.remainingDistance <= 0) {
                 this.remainingDistance = 0;

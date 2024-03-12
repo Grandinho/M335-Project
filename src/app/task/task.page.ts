@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import {
   chevronForwardCircleOutline,
-  closeCircleOutline, exit,
+  closeCircleOutline,
+  exit,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { TaskService } from '../task.service';
-import { TimerComponent } from '../timer/timer.component';
+import { TaskService } from '../_services/task.service';
+import { TimerComponent } from './timer/timer.component';
 import {
   IonAlert,
   IonButton,
@@ -19,11 +20,12 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { NgIf } from '@angular/common';
-import { TimerService } from '../timer.service';
-import { PersonService } from '../person.service';
+import { TimerService } from '../_services/timer.service';
+import { PersonService } from '../_services/person.service';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { AlertController} from "@ionic/angular/standalone";
+import { AlertController } from '@ionic/angular/standalone';
+import { Person } from '../leaderboard/person/person';
 
 @Component({
   selector: 'app-task',
@@ -50,6 +52,7 @@ export class TaskPage implements OnInit {
   taskCompleted: boolean = false;
   nextRoute: string = '';
   private backSubscription: Subscription | undefined;
+  person: Person = new Person();
   constructor(
     private router: Router,
     private taskService: TaskService,
@@ -57,7 +60,7 @@ export class TaskPage implements OnInit {
     private personService: PersonService,
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) {
     addIcons({ chevronForwardCircleOutline, closeCircleOutline });
   }
@@ -70,6 +73,9 @@ export class TaskPage implements OnInit {
     });
     this.taskService.taskTitle$.subscribe((taskTitle) => {
       this.currentTitle = taskTitle;
+    });
+    this.personService.person$.subscribe((perso) => {
+      this.person = perso;
     });
   }
 
@@ -84,6 +90,7 @@ export class TaskPage implements OnInit {
     this.taskService.completeTask(false);
     this.taskService.setTaskTitle('');
     this.timerService.stopTimer();
+    this.timerService.stopPotatoTimer();
     this.personService.resetPerson();
     this.router.navigate(['/leaderboard']);
   }
@@ -102,21 +109,18 @@ export class TaskPage implements OnInit {
     this.backSubscription?.unsubscribe();
   }
 
-
-   alertButtons = [
-      {
-        text: 'Abbrechen',
-        role: 'cancel',
-        handler: () => {
-        },
+  alertButtons = [
+    {
+      text: 'Abbrechen',
+      role: 'cancel',
+      handler: () => {},
+    },
+    {
+      text: 'Beenden',
+      role: 'confirm',
+      handler: () => {
+        this.exit();
       },
-      {
-        text: 'Beenden',
-        role: 'confirm',
-        handler: () => {
-          this.exit()
-        },
-      },
-    ];
-
+    },
+  ];
 }

@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { qrCodeOutline } from 'ionicons/icons';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import { addIcons } from 'ionicons';
 import { Haptics } from '@capacitor/haptics';
-import {IonButton, IonText, IonIcon, IonLabel} from "@ionic/angular/standalone";
+import {
+  IonButton,
+  IonText,
+  IonIcon,
+  IonLabel,
+} from '@ionic/angular/standalone';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-qr-scan',
   templateUrl: './qr-scan.page.html',
   styleUrls: ['./qr-scan.page.scss'],
   standalone: true,
-  imports: [ IonIcon, IonText, IonButton, IonLabel ],
+  imports: [IonIcon, IonText, IonButton, IonLabel, NgIf],
 })
 export class QRScanPage implements OnInit {
   isSupported = false;
@@ -47,9 +53,6 @@ export class QRScanPage implements OnInit {
         this.taskService.completeTask(true);
         this.taskCompleted = true;
         Haptics.vibrate();
-      } else {
-        this.taskService.completeTask(false);
-        this.taskCompleted = false;
       }
     }
   }

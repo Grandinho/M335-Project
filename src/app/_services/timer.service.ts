@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { PersonService } from './person.service';
 
 @Injectable({
   providedIn: 'root',
@@ -37,8 +38,8 @@ export class TimerService {
     }, 1000);
   }
   stopPotatoTimer() {
-    this.potatoTimerSource.next(60);
     clearInterval(this.potatoInterval);
+    this.potatoTimerSource.next(60);
   }
   getPotatoTimer(): number {
     return this.potatoTimerSource.getValue();

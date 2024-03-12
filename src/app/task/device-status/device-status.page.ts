@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import { Device } from '@capacitor/device';
 import { batteryDeadOutline, batteryChargingOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Haptics } from '@capacitor/haptics';
-import {IonIcon} from "@ionic/angular/standalone";
+import { IonIcon } from '@ionic/angular/standalone';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-device-status',
   templateUrl: './device-status.page.html',
   styleUrls: ['./device-status.page.scss'],
   standalone: true,
-  imports: [IonIcon],
+  imports: [IonIcon, NgIf],
 })
 export class DeviceStatusPage implements OnInit {
   isCharging?: boolean = false;
@@ -36,8 +37,6 @@ export class DeviceStatusPage implements OnInit {
         this.completed = true;
         clearInterval(this.interval);
         Haptics.vibrate();
-      } else {
-        this.taskService.completeTask(false);
       }
     }
   }

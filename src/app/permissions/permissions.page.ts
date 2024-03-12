@@ -14,7 +14,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { TimerService } from '../timer.service';
+import { TimerService } from '../_services/timer.service';
 
 @Component({
   selector: 'app-permissions',

@@ -34,8 +34,9 @@ export class Person {
     this.schnitzelCount++;
   }
 
-  addPotato() {
+  addPotato(): number {
     this.potatoCount++;
+    return this.potatoCount;
   }
 }
 

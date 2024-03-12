@@ -1,18 +1,16 @@
-import { Component, OnInit, NgZone, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import { Haptics } from '@capacitor/haptics';
-import {DecimalPipe} from "@angular/common";
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-geolocation',
   templateUrl: './geolocation.page.html',
   styleUrls: ['./geolocation.page.scss'],
   standalone: true,
-  imports: [
-    DecimalPipe
-  ],
+  imports: [DecimalPipe],
 })
 export class GeolocationPage implements OnInit {
   currentLocation = { lat: 0, lng: 0 };

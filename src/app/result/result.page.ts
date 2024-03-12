@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { chevronForwardCircleOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { PersonService } from '../person.service';
+import { PersonService } from '../_services/person.service';
 import { StorageService } from '../_services/storage.service';
 import { Person } from '../leaderboard/person/person';
-import { TimerService } from '../timer.service';
-import { ApiService } from '../api.service';
+import { TimerService } from '../_services/timer.service';
+import { ApiService } from '../_services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {
   IonHeader,

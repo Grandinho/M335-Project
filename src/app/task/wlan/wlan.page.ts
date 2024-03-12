@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import {
   wifiOutline,
   globeOutline,

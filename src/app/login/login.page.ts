@@ -16,7 +16,7 @@ import {
   IonInput,
   IonButton,
 } from '@ionic/angular/standalone';
-import { PersonService } from '../person.service';
+import { PersonService } from '../_services/person.service';
 
 @Component({
   selector: 'app-login',

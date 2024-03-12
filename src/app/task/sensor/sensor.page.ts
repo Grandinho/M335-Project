@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../_services/task.service';
 import { Haptics } from '@capacitor/haptics';
 import { IonContent } from '@ionic/angular/standalone';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-sensor',
   templateUrl: './sensor.page.html',
   styleUrls: ['./sensor.page.scss'],
   standalone: true,
-  imports: [IonContent],
+  imports: [IonContent, NgIf],
 })
 export class SensorPage implements OnInit {
   orientationType: string = '';
