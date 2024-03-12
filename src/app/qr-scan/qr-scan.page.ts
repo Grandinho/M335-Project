@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { qrCodeOutline } from 'ionicons/icons';
 import { TaskService } from '../task.service';
 import { addIcons } from 'ionicons';
 import { Haptics } from '@capacitor/haptics';
+import {IonButton, IonText, IonIcon, IonLabel} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-qr-scan',
   templateUrl: './qr-scan.page.html',
   styleUrls: ['./qr-scan.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [ IonIcon, IonText, IonButton, IonLabel ],
 })
 export class QRScanPage implements OnInit {
   isSupported = false;

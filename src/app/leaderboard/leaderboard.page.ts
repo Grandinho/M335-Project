@@ -1,16 +1,35 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { NgFor, NgStyle } from '@angular/common';
 import { StorageService } from '../_services/storage.service';
-import { Person, persons } from './person/person';
-import { person } from 'ionicons/icons';
+import { Person } from './person/person';
+import {
+  IonButton,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonImg,
+  IonSegment,
+  IonTitle,
+  IonToolbar
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-leaderboard',
   templateUrl: 'leaderboard.page.html',
   styleUrls: ['leaderboard.page.scss'],
-  imports: [IonicModule, NgFor, NgStyle],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonTitle,
+    IonFooter,
+    IonSegment,
+    IonButton,
+    IonImg,
+    NgFor,
+    NgStyle
+  ],
   standalone: true,
 })
 export class LeaderboardPage implements OnInit {

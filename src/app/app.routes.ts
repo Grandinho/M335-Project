@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './home/home.page';
-import {LeaderboardPage} from "./leaderboard/leaderboard.page";
-import { TaskPage } from './task/task.page';
 
 export const routes: Routes = [
   {

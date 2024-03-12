@@ -3,7 +3,6 @@ import { PersonService } from '../person.service';
 import { IonAlert, IonContent } from '@ionic/angular/standalone';
 import { DecimalPipe } from '@angular/common';
 import { TimerService } from '../timer.service';
-import { time } from 'ionicons/icons';
 
 @Component({
   selector: 'app-timer',
