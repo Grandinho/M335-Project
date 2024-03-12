@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Motion } from '@capacitor/motion';
-import { PluginListenerHandle } from '@capacitor/core';
 import { TaskService } from '../task.service';
 import { Haptics } from '@capacitor/haptics';
 
@@ -38,6 +36,7 @@ export class SensorPage implements OnInit {
           this.handleOrientationChange,
         );
       }
+      this.orientationType = orientationType;
     }
   };
 }

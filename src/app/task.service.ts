@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Haptics } from '@capacitor/haptics';
+import { PersonService } from './person.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
+  constructor(private personService: PersonService) {}
   private taskTitleSource = new BehaviorSubject<string>('Default Title');
   taskTitle$ = this.taskTitleSource.asObservable();
 
@@ -20,6 +22,9 @@ export class TaskService {
   }
   completeTask(isCompleted: boolean) {
     this.taskCompletionSource.next(isCompleted);
+    if (isCompleted) {
+      this.personService.addPersonSchnitzel();
+    }
   }
   nextRoute(route: string) {
     this.nextRouteSource.next(route);
@@ -28,6 +33,4 @@ export class TaskService {
   getTaskCompletion(): boolean {
     return this.taskCompletionSource.getValue();
   }
-
-  constructor() {}
 }

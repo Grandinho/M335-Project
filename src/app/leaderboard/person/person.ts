@@ -8,7 +8,7 @@ export class Person {
   constructor() {
     this.name = '';
     this.timeInSeconds = 0;
-    this.schnitzelCount = 6;
+    this.schnitzelCount = 0;
     this.potatoCount = 0;
     this.date = this.todaysDateAsString();
   }
