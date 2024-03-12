@@ -116,3 +116,12 @@ ion-segment-button::after {
 .leaderboard-item:nth-child(3) .profile-icon .position {
   background-color: #cd7f32; /* Farbe für Platz 3 (Bronze) */
 }
+
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}

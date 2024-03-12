@@ -1,21 +1,20 @@
 <div class="content">
   <p class="ion-text-center">
-    Connect your device to a network. If u are already connected first
-    disconnect
+    Verbinden Sie ihr Handy mit einem Internet. Falls Sie bereits verbunden sind, entbinden Sie sich.
   </p>
 
   <p>Status:</p>
   <div *ngIf="isConnected && !isCompleted" class="ion-text-center">
     <ion-icon name="globe-outline"></ion-icon>
-    <p>Disconnect</p>
+    <p>Entbunden</p>
   </div>
   <div *ngIf="!isConnected && !isCompleted" class="ion-text-center">
     <ion-icon name="wifi-outline"></ion-icon>
-    <p>Connect</p>
+    <p>Verbunden</p>
   </div>
 
   <div *ngIf="isCompleted" class="ion-text-center">
     <ion-icon name="shield-checkmark-outline" color="success"></ion-icon>
-    <p>Completed</p>
+    <p>Erledigt</p>
   </div>
 </div>
