@@ -4,13 +4,16 @@ import { Geolocation } from '@capacitor/geolocation';
 import { Platform } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import { Haptics } from '@capacitor/haptics';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
   selector: 'app-distance',
   templateUrl: './distance.page.html',
   styleUrls: ['./distance.page.scss'],
   standalone: true,
-  imports: [],
+  imports: [
+    DecimalPipe
+  ],
 })
 export class DistancePage implements OnInit {
   lastLocation = { lat: 0, lng: 0 };
