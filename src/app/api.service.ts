@@ -27,7 +27,7 @@ export class ApiService {
       `entry.1860183935=${name}` + // Name
       `&entry.564282981=${schnitzel}` + // Schnitzel
       `&entry.1079317865=${potato}` + // Potatoes
-      `&entry.985590604=${hours}:${minutes}:${seconds}`; // Duration`);
+      `&entry.985590604=${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`; // Duration`);
 
     this.http.post(this.url, body, this.httpOptions).subscribe(
       (response) => {
