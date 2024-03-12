@@ -34,5 +34,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" (click)="buttonClicked()"> Weiter </ion-button>
+  <ion-button
+    expand="block"
+    (click)="buttonClicked()"
+    [disabled]="!(hasLocationPermission && hasCameraPermission)"
+  >
+    Weiter
+  </ion-button>
 </ion-content>

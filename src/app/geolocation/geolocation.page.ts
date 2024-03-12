@@ -15,7 +15,7 @@ import { Haptics } from '@capacitor/haptics';
 })
 export class GeolocationPage implements OnInit {
   currentLocation = { lat: 0, lng: 0 };
-  targetLocation = { lat: 47.071586, lng: 8.348635 };
+  targetLocation = { lat: 47.071558, lng: 8.348688 };
   distance: number = 0;
   watchId: any;
   completed: boolean = false;
@@ -46,8 +46,7 @@ export class GeolocationPage implements OnInit {
               this.currentLocation,
               this.targetLocation,
             );
-            this.distance = 5;
-            if (this.distance <= 5) {
+            if (this.distance <= 8) {
               this.taskService.completeTask(true);
               this.completed = true;
               Haptics.vibrate();

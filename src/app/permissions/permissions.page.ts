@@ -65,7 +65,8 @@ export class PermissionsPage implements OnInit {
   }
   buttonClicked() {
     this.router.navigate(['/task/geolocation']);
-    this.timerService.startTimer();
+    this.timerService.stopPotatoTimer();
     this.timerService.startPotatoTimer();
+    this.timerService.startTimer();
   }
 }

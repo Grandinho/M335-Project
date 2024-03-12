@@ -16,8 +16,11 @@ import {
   IonContent,
   IonFooter,
   IonIcon,
+  IonRouterOutlet,
 } from '@ionic/angular/standalone';
 import { DecimalPipe, NgIf } from '@angular/common';
+import { Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-result',
@@ -44,12 +47,15 @@ export class ResultPage implements OnInit {
   minutes: number = 0;
   seconds: number = 0;
   isSaved: boolean = false;
+  private backSubscription: Subscription | undefined;
   constructor(
     private router: Router,
     private personService: PersonService,
     private storageService: StorageService,
     private timerService: TimerService,
     private apiService: ApiService,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
   ) {
     addIcons({ chevronForwardCircleOutline });
   }
@@ -85,5 +91,18 @@ export class ResultPage implements OnInit {
 
   navigateToLeaderboard() {
     this.router.navigate(['/leaderboard']);
+  }
+  ionViewDidEnter() {
+    this.backSubscription = this.platform.backButton.subscribeWithPriority(
+      10,
+      () => {
+        if (!this.routerOutlet.canGoBack()) {
+        }
+      },
+    );
+  }
+
+  ionViewWillLeave() {
+    this.backSubscription?.unsubscribe();
   }
 }

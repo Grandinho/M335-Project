@@ -22,7 +22,7 @@
     <ion-icon
       name="chevron-forward-circle-outline"
       [color]="taskCompleted ? 'success' : 'medium'"
-      (click)="navigateToNextTask()"
+      (click)="taskCompleted ? navigateToNextTask() : false"
     ></ion-icon>
   </ion-toolbar>
 </ion-footer>

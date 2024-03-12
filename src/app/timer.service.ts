@@ -10,7 +10,7 @@ export class TimerService {
   private taskInterval: any;
   timer$ = this.taskTimerSource.asObservable();
 
-  private potatoTimerSource = new BehaviorSubject<number>(10);
+  private potatoTimerSource = new BehaviorSubject<number>(120);
   private potatoInterval: any;
   potatoTimer$ = this.potatoTimerSource.asObservable();
 
@@ -37,7 +37,7 @@ export class TimerService {
     }, 1000);
   }
   stopPotatoTimer() {
-    this.potatoTimerSource.next(10);
+    this.potatoTimerSource.next(120);
     clearInterval(this.potatoInterval);
   }
   getPotatoTimer(): number {
