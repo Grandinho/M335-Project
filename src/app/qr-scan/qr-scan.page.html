@@ -1,20 +1,20 @@
 <div class="content">
   <ion-text class="ion-text-center"
-    >Please scan the QR code containing the following information:
-    <ion-label color="danger">{{ toScanValue }}</ion-label>
+    >Bitte scannen Sie den QR Code mit folgendem Inhalt:
+    <br><ion-label color="danger">{{ toScanValue }}</ion-label>
   </ion-text>
 
   <ion-button (click)="scan()" expand="block" *ngIf="!taskCompleted">
     <ion-icon slot="start" name="qr-code-outline"></ion-icon>
-    Scan
+    EINSCANNEN
   </ion-button>
 
   <div *ngIf="scanAttempted">
     <div *ngIf="taskCompleted; else elseBlock" class="result correct">
-      Correct
+      Korrekt
     </div>
     <ng-template #elseBlock>
-      <div class="result incorrect">False</div>
+      <div class="result incorrect">Falsch</div>
     </ng-template>
   </div>
 </div>

@@ -29,7 +29,7 @@
 .page-content {
   justify-content: center;
   display: flex;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .page-img {
@@ -38,8 +38,14 @@
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.header {
-  text-align: center;
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
 }

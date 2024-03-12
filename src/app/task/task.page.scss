@@ -24,3 +24,12 @@ ion-toolbar.custom-toolbar {
   align-items: center;
   height: 75px;
 }
+
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -22,3 +22,12 @@
   background-color: #ffebee;
   color: #d32f2f;
 }
+
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}

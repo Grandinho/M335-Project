@@ -1,13 +1,13 @@
 <div class="content">
-  <p>Connect your device to charger</p>
+  <p>Schliessen Sie ihr Handy an den Strom an</p>
 
-  <p>Current status:</p>
+  <p>Jetziger Status:</p>
   <div *ngIf="!isCharging; else elseBlock" class="ion-text-center">
     <ion-icon name="battery-dead-outline" color="danger"></ion-icon>
-    <p>Not charging</p>
+    <p>nicht Angeschlossen</p>
   </div>
   <ng-template #elseBlock class="ion-text-center">
     <ion-icon name="battery-charging-outline" color="success"></ion-icon>
-    <p>Charging</p>
+    <p>Angeschlossen</p>
   </ng-template>
 </div>

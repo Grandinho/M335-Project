@@ -1,3 +1,12 @@
 ion-icon {
   font-size: 64px;
 }
+
+ion-header {
+  ion-toolbar {
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
